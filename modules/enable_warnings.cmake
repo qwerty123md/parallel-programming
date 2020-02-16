@@ -1,6 +1,6 @@
 if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
     target_compile_options(${PROJECT_NAME} PRIVATE
-            -Werror
+            #-Werror
             -Wall
             -Wextra
             -Waddress
@@ -8,8 +8,7 @@ if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
             -Wbuiltin-macro-redefined
             -Wswitch
             -Wunreachable-code
-            -pedantic
-            -pedantic-errors)
+            -pedantic)
 else ()
     target_compile_options(${PROJECT_NAME} PRIVATE
             -Werror
