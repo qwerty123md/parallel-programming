@@ -1,0 +1,27 @@
+____________________Find_Calls
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 98.82     29.53    29.53     8240     0.00     0.00  mul_matrix_vector
+  0.33     29.63     0.10    32956     0.00     0.00  scalar_mul
+  0.23     29.79     0.07    24717     0.00     0.00  mul_num_vector
+  0.17     29.91     0.05    16478     0.00     0.00  add_vectors
+  0.10     29.95     0.04     8240     0.00     0.00  check_end_alg
+  0.10     29.98     0.03     8240     0.00     0.00  sub_vectors
+  0.07     29.99     0.02        1     0.02     0.02  initial_alg
+  0.00     29.99     0.00        1     0.00    29.99  do_magic
+  0.00     29.99     0.00        1     0.00     0.00  dump_log
+  0.00     29.99     0.00        1     0.00     0.00  free_data
+  0.00     29.99     0.00        1     0.00     0.00  print_solution
+
+_____________________W/O_parallel
+
+mul_matrix: 29.543
+scalar_mul: 0.118
+mul_num_vector: 0.082
+add_vectors: 0.061
+check: 0.042
+all: 29.889
+
+

@@ -1,0 +1,201 @@
+________________________________________Find_Calls
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total
+ time   seconds   seconds    calls   s/call   s/call  name
+ 98.82     29.53    29.53     8240     0.00     0.00  mul_matrix_vector
+  0.33     29.63     0.10    32956     0.00     0.00  scalar_mul
+  0.23     29.79     0.07    24717     0.00     0.00  mul_num_vector
+  0.17     29.91     0.05    16478     0.00     0.00  add_vectors
+  0.10     29.95     0.04     8240     0.00     0.00  check_end_alg
+  0.10     29.98     0.03     8240     0.00     0.00  sub_vectors
+  0.07     29.99     0.02        1     0.02     0.02  initial_alg
+  0.00     29.99     0.00        1     0.00    29.99  do_magic
+  0.00     29.99     0.00        1     0.00     0.00  dump_log
+  0.00     29.99     0.00        1     0.00     0.00  free_data
+  0.00     29.99     0.00        1     0.00     0.00  print_solution
+
+_________________________________________W/O_parallel
+
+mul_matrix: 29.543
+scalar_mul: 0.118
+mul_num_vector: 0.082
+add_vectors: 0.061
+check: 0.042
+all: 29.889
+
+_________________________________________parallel_for_OMP
+
+_____mul_matrix+
+
+mul_matrix: 15.176
+scalar_mul: 0.146
+mul_num_vector: 0.102
+add_vectors: 0.081
+check: 0.070
+all: 15.626
+
+_____scalar_mul+		#omp parallel reduction(+: result) num_threads(2)
+
+mul_matrix: 31.412
+scalar_mul: 0.566
+mul_num_vector: 0.094
+add_vectors: 0.069
+check: 0.051
+all: 32.235
+
+_____mul_num_vector+
+
+mul_matrix: 35.918
+scalar_mul: 0.127
+mul_num_vector: 0.860
+add_vectors: 0.083
+check: 0.073
+all: 37.113
+
+____Last three together
+
+mul_matrix: 15.205
+scalar_mul: 0.486
+mul_num_vector: 1.128
+add_vectors: 0.084
+check: 0.075
+all: 17.035
+
+________________________________________mul_matrix  check threads
+
+mul_matrix: 29.679		//one thread
+scalar_mul: 0.120
+mul_num_vector: 0.084
+add_vectors: 0.063
+check: 0.046
+all: 30.033
+
+
+mul_matrix: 16.894		//two threads
+scalar_mul: 0.135
+mul_num_vector: 0.095
+add_vectors: 0.069
+check: 0.050
+all: 17.286
+
+
+mul_matrix: 18.371		//three threads
+scalar_mul: 0.153
+mul_num_vector: 0.102
+add_vectors: 0.081
+check: 0.070
+all: 18.827
+
+
+mul_matrix: 15.340		//four threads
+scalar_mul: 0.148
+mul_num_vector: 0.102
+add_vectors: 0.081
+check: 0.071
+all: 15.793
+
+________________________________________mul_matrix  check schedule for TWO & FOUR Threads
+
+____Two threads
+
+gcc main.c cgm.c cgm.h -lm -O0 -lrt -o go -fopenmp
+
+./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go2 big.txt; ./go2 big.txt; ./go2 big.txt; /go2 big.txt; ./go2 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt;
+
+
+mul_matrix: 16.823			#schedule(static)
+scalar_mul: 0.135
+mul_num_vector: 0.095
+add_vectors: 0.069
+check: 0.050
+all: 17.215
+
+
+
+mul_matrix: 16.797			#schedule(dynamic, 100) 10 50 100
+scalar_mul: 0.134
+mul_num_vector: 0.095
+add_vectors: 0.069
+check: 0.050
+all: 17.189
+
+
+
+mul_matrix: 19.984			#schedule(dynamic, 200) 
+scalar_mul: 0.134
+mul_num_vector: 0.094
+add_vectors: 0.069
+check: 0.050
+all: 20.375
+
+
+
+mul_matrix: 16.793			#schedule(guided, 50) 100 200
+scalar_mul: 0.134
+mul_num_vector: 0.095
+add_vectors: 0.069
+check: 0.051
+all: 17.185
+
+____Four threads
+
+
+
+mul_matrix: 15.241      #schedule(static)
+scalar_mul: 0.146
+mul_num_vector: 0.102
+add_vectors: 0.080
+check: 0.070
+all: 15.691
+
+
+
+mul_matrix: 16.805      #schedule(dynamic, 100)
+scalar_mul: 0.151
+mul_num_vector: 0.103
+add_vectors: 0.081
+check: 0.072
+all: 17.264
+
+
+
+mul_matrix: 16.005      #schedule(guided, 100)
+scalar_mul: 0.151
+mul_num_vector: 0.101
+add_vectors: 0.081
+check: 0.071
+all: 16.461
+
+
+________________________________________one parallel section
+
+
+mul_matrix: 17.384
+scalar_mul: 0.272
+mul_num_vector: 0.269
+add_vectors: 0.172
+check: 0.096
+all: 17.954
+
+mul_matrix: 14.018
+scalar_mul: 0.250
+mul_num_vector: 1.278
+add_vectors: 0.635
+check: 0.083
+all: 16.050
+
+mul_matrix: 14.588
+scalar_mul: 0.256
+mul_num_vector: 1.461
+add_vectors: 0.807
+check: 0.077
+all: 16.542
+
+mul_matrix: 15.147
+scalar_mul: 0.248
+mul_num_vector: 2.148
+add_vectors: 1.103
+check: 0.084
+all: 19.008
+

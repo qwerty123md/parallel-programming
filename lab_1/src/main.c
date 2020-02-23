@@ -5,12 +5,27 @@
 #include "cgm.h"
 
 #define GET_RAND(min, max) (rand() % ((max) - (min) + 1) + (min))
+static struct timespec start, end;
 
 static void print_solution(data_t *data) {
 	for (size_t i = 0; i < data->size; i++) {
 		printf("%lf | ", data->x_vector[i]);
 	}
 	putc('\n', stdout);
+}
+
+static void dump_log() {
+	FILE *out = fopen("log.txt", "a+");
+	if (!out) perror("log open fall");
+	fprintf(out,
+	        "mul_matrix: %.3f\nscalar_mul: %.3f\nmul_num_vector: %.3f\nadd_vectors: %.3f\ncheck: %.3f\nall: %.3f\n\n",
+	        timers.mul_mat_vec / 1000000000.0,
+	        timers.scalar_mul / 1000000000.0,
+	        timers.mul_num_vec / 1000000000.0,
+	        timers.add_vect / 1000000000.0,
+	        timers.check / 1000000000.0,
+	        timers.all_magic / 1000000000.0);
+	fclose(out);
 }
 
 static int initial_alg(FILE *config, data_t *data) {
@@ -37,8 +52,8 @@ static int initial_alg(FILE *config, data_t *data) {
 		}
 	}
 	for (size_t i = 0; i < data->size; ++i) {
-		data->x_vector[i] = (double) GET_RAND(-10, 10);
-		//memset(data->x_vector, 1, data->size);                            //don't touch. this for benchmark
+		//data->x_vector[i] = (double) GET_RAND(-10, 10);
+		memset(data->x_vector, 1, data->size);                            //don't touch. this for benchmark
 	}
 	return 0;
 }
@@ -47,7 +62,6 @@ static void free_data(data_t *data, FILE *config) {
 	free(data->x_vector);
 	free(data->coef_matrix);
 	free(data->result_vector);
-	free(data);
 	fclose(config);
 }
 
@@ -60,34 +74,34 @@ int main(int argc, char **argv) {
 		       "vector N\n");
 	}
 	uint8_t err_code = 0;
+	data_t data = {0};
 	FILE *config = fopen(argv[1], "r");
 	if (!config) {
 		perror("Can't open config file");
 		return EXIT_FAILURE;
 	}
 
-	data_t *data = calloc(1, sizeof(data_t));
-	if (!data) {
-		perror("Calloc err");
-		fclose(config);
-		return EXIT_FAILURE;
-	}
-
-	err_code = initial_alg(config, data);
+	err_code = initial_alg(config, &data);
 	if (err_code) {
 		perror("Problems with initialing alg \n{bad config or calloc err}");
-		free_data(data, config);
+		free_data(&data, config);
 		return err_code;
 	}
 
-	err_code = do_magic(data);
+	clock_gettime(CLOCK_REALTIME, &start);
+
+	err_code = do_magic(&data);
 	if (err_code) {
-		free_data(data, config);
+		free_data(&data, config);
 		return err_code;
 	}
 
-	print_solution(data);
+	clock_gettime(CLOCK_REALTIME, &end);
+	timers.all_magic += 1000000000 * (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec);
 
-	free_data(data, config);
+	print_solution(&data);
+	dump_log();
+
+	free_data(&data, config);
 	return 0;
 }
