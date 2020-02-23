@@ -80,12 +80,12 @@ check: 0.050
 all: 17.286
 
 
-mul_matrix: 18.371		//three threads
+mul_matrix: 16.850		//three threads
 scalar_mul: 0.153
 mul_num_vector: 0.102
 add_vectors: 0.081
 check: 0.070
-all: 18.827
+all: 17.127
 
 
 mul_matrix: 15.340		//four threads
@@ -99,9 +99,7 @@ ________________________________________mul_matrix  check schedule for TWO & FOU
 
 ____Two threads
 
-gcc main.c cgm.c cgm.h -lm -O0 -lrt -o go -fopenmp
-
-./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go1 big.txt; ./go2 big.txt; ./go2 big.txt; ./go2 big.txt; /go2 big.txt; ./go2 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt; ./go3 big.txt;
+gcc main.c cgm.c cgm.h -lm -lrt -o go -fopenmp
 
 
 mul_matrix: 16.823			#schedule(static)
@@ -178,24 +176,5 @@ add_vectors: 0.172
 check: 0.096
 all: 17.954
 
-mul_matrix: 14.018
-scalar_mul: 0.250
-mul_num_vector: 1.278
-add_vectors: 0.635
-check: 0.083
-all: 16.050
 
-mul_matrix: 14.588
-scalar_mul: 0.256
-mul_num_vector: 1.461
-add_vectors: 0.807
-check: 0.077
-all: 16.542
-
-mul_matrix: 15.147
-scalar_mul: 0.248
-mul_num_vector: 2.148
-add_vectors: 1.103
-check: 0.084
-all: 19.008
 

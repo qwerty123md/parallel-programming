@@ -109,6 +109,7 @@ int do_magic(data_t *data) {                                     //Conjugate Gra
 	mul_matrix_vector(data->coef_matrix, data->x_vector, size, tmp);
 	sub_vectors(data->result_vector, tmp, size, r);
 	memcpy(z, r, data->size * sizeof(double));
+
 	#pragma omp parallel shared(a, b, scalar_prev_r, tmp, r, z, data) 
 	{
 		while (!check_end_alg(r, data)) {

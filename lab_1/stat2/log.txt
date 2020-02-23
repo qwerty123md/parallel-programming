@@ -80,9 +80,9 @@ check: 0.050
 all: 17.286
 
 
-mul_matrix: 16.870		//three threads
+mul_matrix: 16.850		//three threads
 scalar_mul: 0.153
-mul_num_vector: 0.090
+mul_num_vector: 0.102
 add_vectors: 0.081
 check: 0.070
 all: 17.127
@@ -98,6 +98,8 @@ all: 15.793
 ________________________________________mul_matrix  check schedule for TWO & FOUR Threads
 
 ____Two threads
+
+gcc main.c cgm.c cgm.h -lm -lrt -o go -fopenmp
 
 
 mul_matrix: 16.823			#schedule(static)
@@ -173,4 +175,6 @@ mul_num_vector: 0.269
 add_vectors: 0.172
 check: 0.096
 all: 17.954
+
+
 
