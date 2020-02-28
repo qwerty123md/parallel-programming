@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/qwerty123/parallel-programming/lab_1/src/cgm.cpp
+cgm.h
+/home/qwerty123/parallel-programming/lab_1/src/cgm.h
+
+/home/qwerty123/parallel-programming/lab_1/src/cgm.h
+stdlib.h
+-
+stdbool.h
+-
+
