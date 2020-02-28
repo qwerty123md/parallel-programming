@@ -176,33 +176,5 @@ add_vectors: 0.172
 check: 0.096
 all: 17.954
 
-
-
-mul_matrix: 0.000
-scalar_mul: 0.000
-mul_num_vector: 0.000
-add_vectors: 0.000
-check: 0.000
-all: 0.000
-
-mul_matrix: 0.000
-scalar_mul: 0.000
-mul_num_vector: 0.000
-add_vectors: 0.000
-check: 0.000
-all: 0.004
-
-mul_matrix: 21.597
-scalar_mul: 0.199
-mul_num_vector: 0.173
-add_vectors: 0.107
-check: 0.070
-all: 11.624
-
-mul_matrix: 18.728
-scalar_mul: 0.208
-mul_num_vector: 0.163
-add_vectors: 0.104
-check: 0.069
-all: 0.000
+________________________________________
 
