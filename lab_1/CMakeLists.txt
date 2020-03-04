@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5.1)
 
-project(lab_1)
+project(lab_2)
 
 set(SRC src/main.c)
 set(CMAKE_C_STANDARD 99)
