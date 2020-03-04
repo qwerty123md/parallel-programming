@@ -1,4 +1,0 @@
-/home/qwerty123/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/193.6494.38/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/clang++-6.0 -G "CodeBlocks - Unix Makefiles" /home/qwerty123/parallel-programming/lab_1
--- Configuring done
--- Generating done
--- Build files have been written to: /home/qwerty123/parallel-programming/lab_1/cmake-build-release
