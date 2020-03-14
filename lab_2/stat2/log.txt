@@ -176,5 +176,15 @@ add_vectors: 0.172
 check: 0.096
 all: 17.954
 
+________________________________________
+
+
+mul_matrix: 26.428
+scalar_mul: 0.121
+mul_num_vector: 0.126
+add_vectors: 0.073
+check: 0.071
+all: 11.394
+
 
 

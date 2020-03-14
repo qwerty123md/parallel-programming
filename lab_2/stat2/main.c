@@ -1,11 +1,10 @@
-#include <time.h>
 #include <stdint.h>
 #include <string.h>
 
 #include "cgm.h"
 
 #define GET_RAND(min, max) (rand() % ((max) - (min) + 1) + (min))
-static struct timespec start, end;
+static double start, end;
 
 static void print_solution(data_t *data) {
 	for (size_t i = 0; i < data->size; i++) {
@@ -19,12 +18,12 @@ static void dump_log() {
 	if (!out) perror("log open fall");
 	fprintf(out,
 	        "mul_matrix: %.3f\nscalar_mul: %.3f\nmul_num_vector: %.3f\nadd_vectors: %.3f\ncheck: %.3f\nall: %.3f\n\n",
-	        timers.mul_mat_vec / 1000000000.0,
-	        timers.scalar_mul / 1000000000.0,
-	        timers.mul_num_vec / 1000000000.0,
-	        timers.add_vect / 1000000000.0,
-	        timers.check / 1000000000.0,
-	        timers.all_magic / 1000000000.0);
+	        timers.mul_mat_vec ,
+	        timers.scalar_mul ,
+	        timers.mul_num_vec ,
+	        timers.add_vect ,
+	        timers.check,
+	        timers.all_magic );
 	fclose(out);
 }
 
@@ -88,7 +87,7 @@ int main(int argc, char **argv) {
 		return err_code;
 	}
 
-	clock_gettime(CLOCK_REALTIME, &start);
+	start = omp_get_wtime(); 
 
 	err_code = do_magic(&data);
 	if (err_code) {
@@ -96,8 +95,8 @@ int main(int argc, char **argv) {
 		return err_code;
 	}
 
-	clock_gettime(CLOCK_REALTIME, &end);
-	timers.all_magic += 1000000000 * (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec);
+	end = omp_get_wtime(); 
+	timers.all_magic += end - start;
 
 	print_solution(&data);
 	dump_log();

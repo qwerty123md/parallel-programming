@@ -178,3 +178,19 @@ all: 17.954
 
 ________________________________________
 
+
+mul_matrix: 11.004
+scalar_mul: 0.121
+mul_num_vector: 0.126
+add_vectors: 0.073
+check: 0.071
+all: 11.394
+
+
+mul_matrix: 23.484
+scalar_mul: 0.111
+mul_num_vector: 0.171
+add_vectors: 0.071
+check: 0.102
+all: 11.617
+
