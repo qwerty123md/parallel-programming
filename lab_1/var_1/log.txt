@@ -34,3 +34,17 @@ check: 0.089
 all: 17.111
 
 
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.383
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.383
+
