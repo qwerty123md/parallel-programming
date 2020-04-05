@@ -48,3 +48,17 @@ add_vectors: 0.000
 check: 0.000
 all: 0.383
 
+mul_matrix: 17.779
+scalar_mul: 0.139
+mul_num_vector: 0.096
+add_vectors: 0.074
+check: 0.054
+all: 19.079
+
+mul_matrix: 17.613
+scalar_mul: 0.138
+mul_num_vector: 0.095
+add_vectors: 0.073
+check: 0.053
+all: 19.079
+

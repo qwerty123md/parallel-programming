@@ -6,7 +6,7 @@
 #include <time.h>
 #include <mpi.h>
 
-#define EPSILON (1E-25)
+#define EPSILON (1E-35)
 
 typedef struct timers {
 	double mul_mat_vec;
@@ -26,6 +26,6 @@ typedef struct data {
 	size_t size;
 } data_t;
 
-int do_magic(data_t *data);            //Conjugate Gradient Method
+int do_magic(data_t *data, int argc, char **argv);            //Conjugate Gradient Method
 
 #endif //LAB_1_SRC_CGM_H_

@@ -17,13 +17,286 @@ Each sample counts as 0.01 seconds.
 
 _________________________________________W/O_parallel
 
-mul_matrix: 29.543
-scalar_mul: 0.118
-mul_num_vector: 0.082
-add_vectors: 0.061
-check: 0.042
-all: 29.889
+mul_matrix: 30.258
+scalar_mul: 0.122
+mul_num_vector: 0.085
+add_vectors: 0.063
+check: 0.046
+all: 30.681
 
 _________________________________________parallel_for_MPI_v1
 
+mul_matrix: 14.144
+scalar_mul: 0.189
+mul_num_vector: 0.122
+add_vectors: 0.110
+check: 0.089
+all: 17.111
+
+
+mul_matrix: 21.894
+scalar_mul: 0.164
+mul_num_vector: 0.113
+add_vectors: 0.131
+check: 0.062
+all: 23.604
+
+mul_matrix: 21.710
+scalar_mul: 0.163
+mul_num_vector: 0.114
+add_vectors: 0.130
+check: 0.061
+all: 23.605
+
+mul_matrix: 16.527
+scalar_mul: 0.209
+mul_num_vector: 0.133
+add_vectors: 0.181
+check: 0.098
+all: 20.930
+
+mul_matrix: 16.692
+scalar_mul: 0.210
+mul_num_vector: 0.136
+add_vectors: 0.197
+check: 0.100
+all: 20.947
+
+mul_matrix: 16.404
+scalar_mul: 0.207
+mul_num_vector: 0.132
+add_vectors: 0.174
+check: 0.096
+all: 20.928
+
+mul_matrix: 16.524
+scalar_mul: 0.211
+mul_num_vector: 0.132
+add_vectors: 0.175
+check: 0.095
+all: 20.925
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.258
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.259
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.129
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.130
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.131
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.132
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.126
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.126
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.129
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.132
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.125
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.130
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.133
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.134
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.134
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.135
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.136
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.135
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.130
+
+mul_matrix: 0.000
+scalar_mul: 0.000
+mul_num_vector: 0.000
+add_vectors: 0.000
+check: 0.000
+all: 0.132
+
+mul_matrix: 16.344
+scalar_mul: 0.212
+mul_num_vector: 0.083
+add_vectors: 0.090
+check: 0.096
+all: 20.863
+
+mul_matrix: 16.506
+scalar_mul: 0.210
+mul_num_vector: 0.069
+add_vectors: 0.089
+check: 0.097
+all: 20.862
+
+mul_matrix: 16.439
+scalar_mul: 0.209
+mul_num_vector: 0.067
+add_vectors: 0.090
+check: 0.097
+all: 20.842
+
+mul_matrix: 16.840
+scalar_mul: 0.215
+mul_num_vector: 0.069
+add_vectors: 0.092
+check: 0.099
+all: 20.864
+
+mul_matrix: 16.516
+scalar_mul: 0.208
+mul_num_vector: 0.066
+add_vectors: 0.086
+check: 0.097
+all: 20.661
+
+mul_matrix: 16.637
+scalar_mul: 0.223
+mul_num_vector: 0.068
+add_vectors: 0.092
+check: 0.098
+all: 20.614
+
+mul_matrix: 16.609
+scalar_mul: 0.206
+mul_num_vector: 0.067
+add_vectors: 0.099
+check: 0.097
+all: 20.652
+
+mul_matrix: 16.552
+scalar_mul: 0.207
+mul_num_vector: 0.067
+add_vectors: 0.093
+check: 0.096
+all: 20.633
+
+mul_matrix: 16.750
+scalar_mul: 0.211
+mul_num_vector: 0.069
+add_vectors: 0.095
+check: 0.095
+all: 21.910
+
+mul_matrix: 16.549
+scalar_mul: 0.214
+mul_num_vector: 0.067
+add_vectors: 0.094
+check: 0.097
+all: 21.905
+
+mul_matrix: 17.624
+scalar_mul: 0.233
+mul_num_vector: 0.075
+add_vectors: 0.097
+check: 0.104
+all: 21.900
+
+mul_matrix: 17.698
+scalar_mul: 0.235
+mul_num_vector: 0.074
+add_vectors: 0.094
+check: 0.105
+all: 21.913
 

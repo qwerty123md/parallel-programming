@@ -4,7 +4,7 @@
 #include "cgm.h"
 
 #define GET_RAND(min, max) (rand() % ((max) - (min) + 1) + (min))
-static double start, end;
+static struct timespec start, end;
 
 static void print_solution(data_t *data) {
 	for (size_t i = 0; i < data->size; i++) {
@@ -18,12 +18,12 @@ static void dump_log() {
 	if (!out) perror("log open fall");
 	fprintf(out,
 	        "mul_matrix: %.3f\nscalar_mul: %.3f\nmul_num_vector: %.3f\nadd_vectors: %.3f\ncheck: %.3f\nall: %.3f\n\n",
-	        timers.mul_mat_vec ,
-	        timers.scalar_mul ,
-	        timers.mul_num_vec ,
-	        timers.add_vect ,
+	        timers.mul_mat_vec,
+	        timers.scalar_mul,
+	        timers.mul_num_vec,
+	        timers.add_vect,
 	        timers.check,
-	        timers.all_magic );
+	        timers.all_magic);
 	fclose(out);
 }
 
@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
 		return err_code;
 	}
 
-	start = MPI_Wtime();
+	clock_gettime(CLOCK_REALTIME, &start);
 
 	err_code = do_magic(&data, argc, argv);
 	if (err_code) {
@@ -96,8 +96,8 @@ int main(int argc, char **argv) {
 		return err_code;
 	}
 
-	end = MPI_Wtime();
-	timers.all_magic += end - start;
+	clock_gettime(CLOCK_REALTIME, &end);
+	timers.all_magic += (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1E+9;
 
 	print_solution(&data);
 	dump_log();
