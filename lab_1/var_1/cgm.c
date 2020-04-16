@@ -125,7 +125,6 @@ int do_magic(data_t *data, int argc, char **argv) {                             
 
 	while (!check_end_alg(r, data)) {
 		mul_matrix_vector(local_mat, z, mat_size, block_size, local_tmp);       //a
-		MPI_Barrier(MPI_COMM_WORLD);
 		MPI_Allgather(local_tmp, block_size, MPI_DOUBLE, tmp, block_size, MPI_DOUBLE, MPI_COMM_WORLD);
 		a = scalar_mul(r, r, mat_size) / scalar_mul(tmp, z, mat_size);
 
