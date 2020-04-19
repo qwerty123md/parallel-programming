@@ -4,16 +4,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <omp.h>
 
 #define EPSILON (1E-25)
 
 typedef struct timers {
-	size_t mul_mat_vec;
-	size_t scalar_mul;
-	size_t mul_num_vec;
-	size_t add_vect;
-	size_t check;
-	size_t all_magic;
+	double mul_mat_vec;
+	double scalar_mul;
+	double mul_num_vec;
+	double add_vect;
+	double check;
+	double all_magic;
 } timers_t;
 
 extern timers_t timers;
