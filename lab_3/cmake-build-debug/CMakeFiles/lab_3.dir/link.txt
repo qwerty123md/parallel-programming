@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/lab_3.dir/src/main.c.o CMakeFiles/lab_3.dir/src/mul_grid.c.o  -o lab_3 -lm 
