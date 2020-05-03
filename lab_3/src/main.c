@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
 
 	data_t data;
 
-	if (check_args(argv, &data) == EXIT_FAILURE) {
+	if (check_args(argv, &data) == 1) {
 		return EXIT_FAILURE;
 	}
 
@@ -84,7 +84,12 @@ int main(int argc, char **argv) {
 		data.A = malloc(data.N[0] * data.N[1] * sizeof(double));
 		data.B = malloc(data.N[1] * data.N[2] * sizeof(double));
 		data.C = malloc(data.N[0] * data.N[2] * sizeof(double));
-
+		if(!(data.A && data.B && data.C)){
+			perror("Allocate error memory for matrix\n");
+			free_data(&data);
+			MPI_Finalize();
+			return EXIT_FAILURE;
+		}
 		init_matrix(data.A, data.N[0], data.N[1]);
 		init_matrix(data.B, data.N[1], data.N[2]);
 	}
@@ -95,20 +100,21 @@ int main(int argc, char **argv) {
 	int size_block_A = data.lines_in_block * data.N[1];
 	int size_block_B = data.columns_in_block * data.N[1];
 
-	bool ret_code = 0;
-
 	data.sub_A = malloc(size_block_A * sizeof(double));
 	data.sub_B = malloc(size_block_B * sizeof(double));
 	data.sub_C = malloc(data.columns_in_block * data.lines_in_block * sizeof(double));
 
+	if(!(data.sub_A && data.sub_B && data.sub_C)){
+		perror("Allocate error memory for submatrix\n");
+		free_data(&data);
+		MPI_Finalize();
+		return EXIT_FAILURE;
+	}
+
 	double start = MPI_Wtime();
 
-	if (create_grid(&data) == EXIT_FAILURE) {
-		fprintf(stderr, "Bad allocation\n");
-		ret_code = EXIT_FAILURE;
-	}
+	create_grid(&data);
 	mul_matrix(&data);
-
 	gather_matrix(&data);
 
 	double end = MPI_Wtime();

@@ -35,7 +35,7 @@ void gather_matrix(data_t *data) {
 	MPI_Type_free(&sub_C_t);
 }
 
-bool create_grid(data_t *data) {
+void create_grid(data_t *data) {
 	int periods[2] = {0, 0};
 	int sub_comm1[2] = {1, 0};
 	int sub_comm2[2] = {0, 1};
@@ -78,6 +78,4 @@ bool create_grid(data_t *data) {
 
 	MPI_Type_free(&sub_B_t);
 	MPI_Type_free(&tmp_t);
-
-	return EXIT_SUCCESS;
 }
