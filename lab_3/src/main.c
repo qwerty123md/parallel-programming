@@ -1,17 +1,16 @@
 #include "mul_grid.h"
 #include <errno.h>
 
-#define GET_RAND(min, max) (rand() % ((max) - (min) + 1) + (min))
 #define BASE 10
 
 int rank = 0;
 int size = 0;
 MPI_Comm COMM_2D, COMM_COLUMNS, COMM_LINES;
 
-static void init_matrix(double *mat, int N, int M) {
+static void init_matrix(double *mat, const int N, const int M) {
 	for (int i = 0; i < N; ++i) {
 		for (int j = 0; j < M; ++j) {
-			mat[i * M + j] = GET_RAND(-1000, 1000);
+			mat[i * M + j] = (rand() % 2000) - 1000;
 		}
 	}
 }
